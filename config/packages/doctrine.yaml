@@ -1,0 +1,53 @@
+# Doctrine params and migrations setup
+doctrine:
+    dbal:
+        # убирает запрос в базу при сборке контейнера
+        server_version: 5.7
+        driver:         pdo_mysql
+        url:            '%env(DATABASE_URL)%'
+        charset:        utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        mapping_types:
+            enum:                     string
+            uuid_binary:              binary
+            uuid_binary_ordered_time: binary
+        types:
+            uuid:                     Ramsey\Uuid\Doctrine\UuidType
+            uuid_binary:              Ramsey\Uuid\Doctrine\UuidBinaryType
+            uuid_binary_ordered_time: Ramsey\Uuid\Doctrine\UuidBinaryOrderedTimeType
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+                auto_mapping: true
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
+                        alias: App
+                    LogEntry:
+                        type:      annotation
+                        dir:       "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Loggable/Entity"
+                        alias:     GedmoLoggable
+                        is_bundle: false
+                        prefix:    'Gedmo\Loggable\Entity'
+                    Blameable:
+                        type:      annotation
+                        dir:       "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Blameable"
+                        alias:     GedmoBlameable
+                        is_bundle: false
+                        prefix:    'Gedmo\Blameable'
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true
+                    role_aware_filter:
+                        class:   AppBundle\Filter\RoleAwareFilter
+                        enabled: true

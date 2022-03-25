@@ -1,0 +1,13 @@
+## Методы для работы с сервисом автокомплита
+
+# Получаем список возможных имен для переданного префикса
+suggest_name:
+    path:       /suggest/name
+    controller: App\Domain\Core\Suggest\Controller\SuggestController::suggestNamesAction
+    methods:    GET
+
+# Получаем список возможных адресов для переданного префикса в зависимости от выбранного города пользователя или его собственного города
+suggest_address:
+    path:       /suggest/address
+    controller: App\Domain\Core\Suggest\Controller\SuggestController::suggestAddressAction
+    methods:    GET

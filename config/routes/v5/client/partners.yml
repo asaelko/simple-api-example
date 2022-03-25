@@ -1,0 +1,13 @@
+#Методы для работы с оценками партнеров
+
+get_partners_list:
+  path: /client/partners/{category}
+  controller: App\Domain\Core\Partners\Controller\PartnersController::getList
+  methods: GET
+  requirements:
+    category: 'drive|buy'
+
+update_partners_mark_by_user:
+  path:       /client/partners-mark
+  controller: App\Domain\Core\Partners\Controller\PartnersMarkController::updatePartnersMarkByClient
+  methods:    POST

@@ -1,0 +1,15 @@
+api_v5:
+    resource:    v5/
+    type:        directory
+    prefix:      /v5
+    name_prefix: v5_
+
+app.swagger_ui:
+    path:    /api/doc/{area}
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui, area: default }
+
+app.swagger:
+    path:    /api/doc.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }

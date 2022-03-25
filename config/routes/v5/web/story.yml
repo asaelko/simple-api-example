@@ -1,0 +1,15 @@
+## Методы для работы с историями для веба
+
+# Метод запроса списка текущих историй
+get_stories_for_web:
+    path: /web/stories
+    controller: App\Domain\Core\Story\Controller\WebStoryController:getStoriesAction
+    methods: GET
+
+# Метод запроса списка текущих историй по бренду
+get_stories_for_web_by_brand:
+    path: /web/brand/{brandId}/stories
+    controller: App\Domain\Core\Story\Controller\WebStoryController:getStoriesByBrandAction
+    methods: GET
+    requirements:
+        brandId: '\d+'

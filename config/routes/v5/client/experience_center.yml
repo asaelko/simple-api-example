@@ -1,0 +1,25 @@
+## Методы для функционала экспириенс-центров для клиентов
+
+# Отдает все доступные экспириенс-центры
+client_get_centers:
+    path:       /client/experience-center
+    controller: App\Domain\Core\ExperienceCenters\Controller\ClientController::getCenters
+    methods:    GET
+
+# Отдает свободные слоты расписания для выбранного экспириенс-центра
+client_get_slots:
+    path:       /client/experience-center/slots
+    controller: App\Domain\Core\ExperienceCenters\Controller\ClientController::getSlotsForBook
+    methods:    GET
+
+# Отдает существующие запросы клиента на посещение экспириенс-центров
+client_get_client_request:
+    path:       /client/experience-center/client-requests
+    controller: App\Domain\Core\ExperienceCenters\Controller\ClientController::getClientRequests
+    methods:    GET
+
+# Отправляет запрос на запись в экспириенс-центр
+client_book_request:
+    path:       /client/experience-center/book
+    controller: App\Domain\Core\ExperienceCenters\Controller\ClientController::bookSlotFromMobileApp
+    methods:    POST

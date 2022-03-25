@@ -1,0 +1,34 @@
+create_news:
+    path: admin/web/news/create
+    controller: App\Domain\WebSite\News\Controller\NewsAdminController:create
+    methods: POST
+
+update_news:
+    path: admin/web/news/update
+    controller: App\Domain\WebSite\News\Controller\NewsAdminController:update
+    methods: POST
+
+list_news_admin:
+    path: admin/web/news/list
+    controller: App\Domain\WebSite\News\Controller\NewsAdminController:list
+    methods: GET
+
+list_news_client:
+    path: /web/news/list
+    controller: App\Domain\WebSite\News\Controller\ClientNewsController:list
+    methods: GET
+
+list_news_by_brand_client:
+    path: /web/brand/{brandId}/news
+    controller: App\Domain\WebSite\News\Controller\ClientNewsController:listByBrand
+    methods: GET
+
+list_news_by_model_client:
+    path: /web/model/{modelId}/news
+    controller: App\Domain\WebSite\News\Controller\ClientNewsController:listByModel
+    methods: GET
+
+remove_news_admin:
+    path: admin/web/news/remove
+    controller: App\Domain\WebSite\News\Controller\NewsAdminController:remove
+    methods: POST

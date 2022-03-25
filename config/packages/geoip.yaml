@@ -1,0 +1,16 @@
+gpslab_geoip:
+  # Your personal licence key
+  license: 'YOZU7OvYfmFMm4oq'
+
+  # One of database edition IDs:
+  #   GeoLite2-ASN
+  #   GeoLite2-City
+  #   GeoLite2-Country
+  #   GeoIP2-City
+  #   GeoIP2-Country
+  #   GeoIP2-Anonymous-IP
+  #   GeoIP2-Domain
+  #   GeoIP2-ISP
+  edition: 'GeoLite2-City'
+  path: '%kernel.project_dir%/var/GeoLite2-City.mmdb'
+  locales: [ 'ru', 'en' ]

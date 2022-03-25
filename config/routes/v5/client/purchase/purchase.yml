@@ -1,0 +1,28 @@
+# Методы для работы с заявками на покупку
+
+get_current_purchase:
+  path:       /client/purchase/current
+  controller: App\Domain\Core\Purchase\Controller\Client\PurchaseClientController::getCurrentPurchase
+  methods:    GET
+
+get_purchase_request_params:
+  path:       /client/purchase/params
+  controller: App\Domain\Core\Purchase\Controller\Client\PurchaseClientController::getRequestParams
+  methods:    GET
+
+get_purchase_gifst:
+  path:       /client/purchase/gifts
+  controller: App\Domain\Core\Purchase\Controller\Client\PurchaseClientController::getGifts
+  methods:    GET
+
+create_purchase:
+  path:       /client/purchase
+  controller: App\Domain\Core\Purchase\Controller\Client\PurchaseClientController::createRequest
+  methods:    POST
+
+update_purchase:
+  path:       /client/purchase/{purchaseId}
+  controller: App\Domain\Core\Purchase\Controller\Client\PurchaseClientController::updateRequest
+  methods:    POST
+  requirements:
+    purchaseId: "[0-9a-f]{8}[0-9a-f]{4}[0-9a-f]{4}[0-9a-f]{4}[0-9a-f]{12}"

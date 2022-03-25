@@ -1,0 +1,5 @@
+# Каталог моделей авто для просмотра стоков и/или тест-драйвов
+get_brand_catalog:
+  path: /web/catalog/brand/list
+  controller: App\Domain\WebSite\Catalog\Controller\BrandController:listAction
+  methods: GET

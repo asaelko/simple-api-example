@@ -1,0 +1,17 @@
+## Методы для работы с моделями авто
+
+# Отдает модель по её идентификатору
+get_model:
+    path:       /model/{modelId}
+    controller: App\Domain\Core\Model\Controller\Controller:getModel
+    methods:    GET
+    requirements:
+        modelId: '\d+'
+
+# Отдает расписание для модели
+get_model_schedule:
+    path:       /model/{modelId}/schedule
+    controller: App\Domain\Core\Model\Controller\Controller:getSchedule
+    methods:    GET
+    requirements:
+        modelId: '\d+'

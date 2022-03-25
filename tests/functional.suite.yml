@@ -1,0 +1,11 @@
+actor: FunctionalTester
+modules:
+    enabled:
+        - Symfony:
+              app_path: 'src'
+              var_path: 'var'
+              environment: 'dev'
+              debug: true
+        - Asserts
+        - Sequence
+        - Helper\Functional

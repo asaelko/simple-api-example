@@ -1,0 +1,33 @@
+# Лонг-драйв
+
+# Отдает партнеров, предоставляющих лонг-драйв для модели
+get_long_drives_by_model:
+  path:       /long-drive/model/{modelId}
+  controller: App\Domain\Core\LongDrive\Controller\Client\LongDriveClientController::getLongDriveList
+  methods:    GET
+  requirements:
+    modelId: '\d+'
+
+# Создает запрос на лонг-драйв на модель авто
+create_long_drive_request:
+  path:       /long-drive/model/{longDriveModelId}/request
+  controller: App\Domain\Core\LongDrive\Controller\Client\LongDriveClientController::createLongDriveRequest
+  methods:    POST
+  requirements:
+    longDriveModelId: '\d+'
+
+# Создает анонимный запрос на лонг-драйв на модель авто
+create_anon_long_drive_request:
+  path:       /web/long-drive/model/{longDriveModelId}/request
+  controller: App\Domain\Core\LongDrive\Controller\Client\LongDriveClientController::createAnonLongDriveRequest
+  methods:    POST
+  requirements:
+    modelId: '\d+'
+
+# Создает анонимную отметку о желании клиента лонг-драйва на модель авто
+create_anon_long_drive_query:
+  path:       /web/long-drive/model/{modelId}/query
+  controller: App\Domain\Core\LongDrive\Controller\Client\LongDriveClientController::createAnonLongDriveQuery
+  methods:    POST
+  requirements:
+    modelId: '\d+'

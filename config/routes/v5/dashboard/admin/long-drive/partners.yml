@@ -1,0 +1,29 @@
+# Методы для работы с партнерами по лонг-драйвам
+
+# Получение списка партнеров по лонг-драйвам
+dashboard_long_drive_partners_list:
+  path:       /dashboard/admin/long-drive/partners
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDrivePartnerController::listPartners
+  methods:    GET
+
+# Получение конкретного партнера по лонг-драйву
+dashboard_long_drive_partners_get:
+  path:       /dashboard/admin/long-drive/partner/{partnerId}
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDrivePartnerController::getPartner
+  methods:    GET
+  requirements:
+    partnerId: '\d+'
+
+# Создание партнера по лонг-драйву
+dashboard_long_drive_partners_create:
+  path:       /dashboard/admin/long-drive/partners
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDrivePartnerController::createPartner
+  methods:    POST
+
+# Изменение партнера по лонг-драйву
+dashboard_long_drive_partners_update:
+  path:       /dashboard/admin/long-drive/partner/{partnerId}
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDrivePartnerController::updatePartner
+  methods:    POST
+  requirements:
+    partnerId: '\d+'

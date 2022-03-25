@@ -1,0 +1,9 @@
+get_brand_data_sync:
+  path:       /sync/brand/data
+  controller: App\Domain\Infrastructure\PartnerApi\Controller\BrandDataSyncController::getData
+  methods:    GET
+
+get_data_postback:
+  path:       /sync/data/postback
+  controller: App\Domain\Infrastructure\PartnerApi\Controller\BrandDataSyncController::getPostback
+  methods:    POST

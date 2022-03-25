@@ -1,0 +1,18 @@
+## Методы для работы с системным геосервисом
+
+get_suggested_cities_list:
+  path: /cities
+  controller: App\Domain\Core\Geo\Controller\CityController::getCities
+  methods: GET
+
+# Геокодер - определяем адрес по переданным координатам
+geo_to_address:
+  path: /geo/geo-to-address
+  controller: App\Domain\Core\Geo\Controller\GeoDataController::getAddressByGeo
+  methods: GET
+
+# Обратный геокодер - определяем координаты переданного адреса
+address_to_geo:
+  path: /geo/address-to-geo
+  controller: App\Domain\Core\Geo\Controller\GeoDataController::getGeoByAddress
+  methods: GET

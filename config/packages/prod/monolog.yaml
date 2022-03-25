@@ -1,0 +1,22 @@
+monolog:
+  handlers:
+    main:
+      type: fingers_crossed
+      action_level: info
+      handler: nested
+    nested:
+      type: rotating_file
+      path: '%kernel.logs_dir%/%kernel.environment%.log'
+      level: info
+      max_files: 10
+    console:
+      type: console
+      process_psr_3_messages: false
+    elasticsearch:
+      elasticsearch:
+        host: '%log_index%'
+      index: '\l\o\g\s-Ymd'
+      document_type: logs
+      type: elasticsearch
+      formatter: 'elastica_formatter'
+      ignore_error: true

@@ -1,0 +1,23 @@
+## Методы для работы с историями
+
+# Метод запроса историй для показа клиенту
+get_stories_for_client:
+    path: /stories
+    controller: App\Domain\Core\Story\Controller\ClientStoryController:getStoriesAction
+    methods: GET
+
+# Метод запроса истории по её ID
+get_story_by_id:
+    path: /story/{storyId}
+    controller: App\Domain\Core\Story\Controller\ClientStoryController:getStoryAction
+    methods: GET
+    requirements:
+        storyId: '\d+'
+
+# Метод пометки истории просмотренной
+mark_story_as_viewed:
+    path: /story/{storyId}/viewed
+    controller: App\Domain\Core\Story\Controller\ClientStoryController:markStoryAsViewedAction
+    methods: PUT
+    requirements:
+        storyId: '\d+'

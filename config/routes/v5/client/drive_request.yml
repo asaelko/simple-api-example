@@ -1,0 +1,26 @@
+## Методы для функционала "Заявки на тест-драйв в дилерский центр", функционал клиента
+
+# Получаем список ДЦ, доступных для прохождения ТД на выбранной модели
+get_dealer_center:
+    path:       /client/dealer-center
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::getDealerCenterAction
+    methods:    GET
+
+#Получаем завершеные тест драйвы котороые надо оценить
+get_test_drive_for_mark:
+    path:       /client/test-drive/for-mark
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::getTestDriveForMark
+    methods:    GET
+
+#Добавляем комент и оценку тд
+set_mark_and_comment:
+    path:       /client/test-drive/set-mark
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::updateRequestByClient
+    methods:    POST
+
+# Создаем заявку на прохождение ТД в выбранный дилерский центр
+create_test_drive_request:
+    path:       /client/create/test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::createDealerTestDriveRequest
+    methods:    POST
+

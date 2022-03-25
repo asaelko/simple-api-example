@@ -1,0 +1,21 @@
+# каталог авто из стока для веб-сайта
+get_auto_catalog:
+  path: /web/catalog/stock/list
+  controller: App\Domain\WebSite\Catalog\Controller\StockController:listAction
+  methods: POST
+
+# страница конкретного авто из стока с данными по ТД
+get_auto:
+  path: /web/catalog/stock/{stockId}
+  controller: App\Domain\WebSite\Catalog\Controller\StockController:showAction
+  methods: GET
+  requirements:
+    stockId: '\d+'
+
+# Бронирование машины из стока
+book_auto:
+  path: /web/catalog/stock/{stockId}/book
+  controller: App\Domain\WebSite\Catalog\Controller\StockController:bookAction
+  methods: POST
+  requirements:
+    stockId: '\d+'

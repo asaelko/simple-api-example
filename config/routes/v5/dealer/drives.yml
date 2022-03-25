@@ -1,0 +1,13 @@
+## Методы дилера для работы с доступными поездками из панели администратора
+
+# Получаем список поездок, совершенных с виджета дилера
+get_widget_drives_list:
+    path:       /dealer/widget-drives-list
+    controller: CarlBundle\Controller\v500\Dealer\DriveDealerController::getWidgetDriveList
+    methods:    GET
+
+# Получаем список поездок, совершенных на доступных к просмотру дилером моделях
+get_models_drives_list:
+    path:       /dealer/models-drives-list
+    controller: CarlBundle\Controller\v500\Dealer\DriveDealerController::getModelDriveList
+    methods:    POST

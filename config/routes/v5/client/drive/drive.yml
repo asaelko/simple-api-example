@@ -1,0 +1,15 @@
+### Методы получения фидбека от пользователя
+
+# Получаем список поездок клиента
+get_client_drives:
+    path:       /client/drive
+    controller: App\Domain\Core\Drive\Controller\ClientController::listAction
+    methods:    GET
+
+# Оставляем фидбек по поездке
+set_drive_feedback:
+    path:       /client/drive/{driveId}/feedback
+    controller: App\Domain\Core\Drive\Controller\ClientController::setFeedbackAction
+    methods:    POST
+    requirements:
+        driveId: '\d+'

@@ -1,0 +1,32 @@
+# Управление данными для страниц сайта
+
+list_pages_admin:
+  path: admin/web/pages
+  controller: App\Domain\Core\Web\Controller\Admin\PageController:list
+  methods: GET
+
+show_page_admin:
+  path: admin/web/page
+  controller: App\Domain\Core\Web\Controller\Admin\PageController:show
+  methods: GET
+
+create_news:
+  path: admin/web/page
+  controller: App\Domain\Core\Web\Controller\Admin\PageController:createOrUpdate
+  methods: POST
+
+delete_news:
+  path: admin/web/page
+  controller: App\Domain\Core\Web\Controller\Admin\PageController:delete
+  methods: DELETE
+
+
+list_pages_client:
+  path: web/pages
+  controller: App\Domain\Core\Web\Controller\Client\PageController:list
+  methods: GET
+
+show_page_client:
+  path: web/page
+  controller: App\Domain\Core\Web\Controller\Client\PageController:show
+  methods: GET

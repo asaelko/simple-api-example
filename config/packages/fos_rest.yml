@@ -1,0 +1,36 @@
+# Set up REST structure and listeners
+fos_rest:
+    param_fetcher_listener: force
+    routing_loader: false
+    serializer:
+        serialize_null: true
+    body_listener: false
+
+    format_listener:
+        rules:
+            - { path: ^/, priorities: [ json ], fallback_format: json, prefer_extension: true }
+
+    body_converter:
+        enabled: false
+
+    service:
+       view_handler: app.view_handler
+
+    view:
+        view_response_listener: 'force'
+        formats:
+            json: true
+
+    versioning:
+        enabled: true
+        default_version: '1.0'
+        resolvers:
+            query:
+                enabled: true
+                parameter_name: v
+            custom_header:
+                enabled: true
+                header_name: X-Accept-Version
+        guessing_order:
+            - query
+            - custom_header

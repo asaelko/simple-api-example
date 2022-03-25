@@ -1,0 +1,12 @@
+## Методы для функционала "Заявки на тест-драйв в дилерский центр", функционал дилера
+
+# Получаем список заявок на прохождение тест-драйва в ДЦ
+get_dealer_centers_by_model:
+    path:       /classified/get-dealer-test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::getDealersCenterAndScheduleByModel
+    methods:    GET
+
+book_dealer_centers_by_model:
+    path:       /classified/book-dealer-test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::bookTestDrive
+    methods:    POST

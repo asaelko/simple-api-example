@@ -1,0 +1,34 @@
+## Методы для работы с марками авто
+
+# Отдает список брендов
+get_brand_list:
+    path:       /brands
+    controller: App\Domain\Core\Brand\Controller\Controller:getList
+    methods:    GET
+
+# Отдает короткий список брендов и моделей для дропдаунов
+get_short_brand_list:
+    path:       /brands/short
+    controller: App\Domain\Core\Brand\Controller\Controller:getShortList
+    methods:    GET
+
+# Отдает бренд по его идентификатору
+get_brand:
+    path:       /brand/{brandId}
+    controller: App\Domain\Core\Brand\Controller\Controller:getBrand
+    methods:    GET
+    requirements:
+        brandId: '\d+'
+
+# Отдает список брендов и моделей для фильтрации по клиентским авто
+get_brands_for_client_cat_filter:
+    path:       /brand/models-with-approved-cars
+    controller: App\Domain\Core\Brand\Controller\FilterController:getBrandsWithModelsForClientCarsAction
+    methods:    GET
+
+# Отдает список брендов и моделей для фильтрации по поездкам
+get_brands_for_drives_filter:
+    path:       /brand/models-with-drives
+    controller: App\Domain\Core\Brand\Controller\FilterController:getBrandsWithModelsAndDrivesAction
+    methods:    GET
+

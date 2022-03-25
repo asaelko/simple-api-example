@@ -1,0 +1,11 @@
+#Методы для работы с car price
+
+car-price-create-order:
+  path:       /client/car-price/order
+  controller: App\Domain\Infrastructure\CarPrice\Controller\CarPriceController::createCarPriceOrder
+  methods:    POST
+
+car-price-office-list:
+  path:       /client/car-price/office-list
+  controller: App\Domain\Infrastructure\CarPrice\Controller\CarPriceController::getOfficeList
+  methods:    GET

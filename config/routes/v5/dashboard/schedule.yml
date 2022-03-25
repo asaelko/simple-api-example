@@ -1,0 +1,5 @@
+## Метод отдает запросы на появление расписания машин на конкретное время для создания карты запросов
+get_schedule_subscriptions_by_time_range:
+    path:       /dashboard/schedule/get_subscriptions_by_time_range
+    controller: App\Domain\Core\Dashboard\Controller\Schedule\ScheduleSubscriberController:getSubscriptionsForTimeRange
+    methods:    GET

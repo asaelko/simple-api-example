@@ -1,0 +1,6 @@
+#Методы для работы с оценками партнеров
+
+partners_mark_list:
+  path:       /admin/partners-mark
+  controller: App\Domain\Core\Partners\Controller\PartnersMarkController::listAction
+  methods:    GET

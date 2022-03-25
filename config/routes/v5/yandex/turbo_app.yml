@@ -1,0 +1,27 @@
+## Методы для работы с яндексом
+
+# Авторизация по номеру мобильного телефона
+yandex_auth:
+    path:       /yandex/auth
+    controller: App\Domain\Yandex\TurboApp\Controller\AuthController::auth
+    methods:    POST
+
+yandex_book:
+    path:       /yandex/book
+    controller: App\Domain\Yandex\TurboApp\Controller\DriveController::bookTestDrive
+    methods:    POST
+
+yandex_offer_request:
+    path:       /yandex/{carId}/offer
+    controller: App\Domain\Yandex\TurboApp\Controller\OfferController::requestAction
+    methods:    POST
+
+yandex_td_yml:
+    path:       /yandex/feed.yml
+    controller: App\Domain\Yandex\Yml\Controller\YmlController::getYmlAction
+    methods:    GET
+
+yandex_rd_csv:
+    path:       /yandex/offers/feed.csv
+    controller: App\Domain\Yandex\Yml\Controller\YmlController::getYmlOfferAction
+    methods:    GET

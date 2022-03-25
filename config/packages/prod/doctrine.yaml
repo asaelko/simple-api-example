@@ -1,0 +1,25 @@
+# Doctrine params and migrations setup
+doctrine:
+    orm:
+        auto_generate_proxy_classes: true
+        proxy_dir: '%kernel.cache_dir%/doctrine/orm/Proxies'
+        proxy_namespace: Proxies
+    dbal:
+        server_version: 8.0
+        driver:         pdo_mysql
+        url:            '%env(resolve:DATABASE_URL)%'
+        charset:        utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        options:
+            MYSQL_ATTR_SSL_CA:                 '%env(resolve:MYSQL_CA_CERT)%'
+            MYSQL_ATTR_SSL_VERIFY_SERVER_CERT: true
+        mapping_types:
+            enum:                     string
+            uuid_binary:              binary
+            uuid_binary_ordered_time: binary
+        types:
+            uuid:                     Ramsey\Uuid\Doctrine\UuidType
+            uuid_binary:              Ramsey\Uuid\Doctrine\UuidBinaryType
+            uuid_binary_ordered_time: Ramsey\Uuid\Doctrine\UuidBinaryOrderedTimeType

@@ -1,0 +1,14 @@
+# Подписка
+
+# Получаем список запросов на подписку у партнера
+dashboard_subscription_request_list:
+  path:       /dashboard/admin/subscription/request/list
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionRequestsController::getRequests
+  methods:    GET
+
+dashboard_subscription_request_delete:
+  path:       /dashboard/admin/subscription/request/{requestId}
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionRequestsController::deleteRequest
+  methods:    DELETE
+  requirements:
+    requestId: '\d+'

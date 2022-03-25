@@ -1,0 +1,56 @@
+framework:
+  messenger:
+    # Uncomment this (and the failed transport below) to send failed messages to this transport for later handling.
+    # failure_transport: failed
+    buses:
+      messenger.bus.default:
+        middleware:
+          - doctrine_ping_connection
+          - doctrine_close_connection
+
+    transports:
+      async: '%async_bus%'
+      event_bus: '%event_bus%'
+      failed: '%failed_bus%'
+
+    routing:
+      # Route your messages to the transports
+      'AppBundle\Service\Mail\Mail': async
+      'AppBundle\Service\Slack\SlackMessage': async
+
+      # amocrm
+      App\Domain\Infrastructure\AmoCrm\Messenger\Message\AmoCanceledDriveMessage: async
+
+      # emarsys
+      'CarlBundle\Service\Integration\Emarsys\Event\Message\EmarsysRemoveUserMessage': async
+      'CarlBundle\Service\Integration\Emarsys\Event\Message\EmarsysUpdateUserMessage': async
+      'CarlBundle\Service\Integration\Emarsys\Event\Type\AbstractEmarsysEvent': async
+
+      # calltouch
+      'CarlBundle\Service\Integration\CallTouch\CallTouchRequest': async
+      'App\Messenger\Messages\FeedbackStatusEvent': async
+
+      # notifications async bus
+      'CarlBundle\Service\Integration\Emarsys\Event\EmarsysEventInterface': async
+      'App\Domain\Notifications\NotificationInterface': async
+      'App\Domain\Notifications\Messages\Drive\Message\OnDriveUpCheckCameraNotificationMessage': async
+      'App\Domain\Notifications\Messages\Drive\Message\OnFeedbackDriveCheckVideoUrlSlackNotificationMessage': async
+      'App\Domain\Notifications\Messages\Dealer\Message\DealerTestDriveSlackNotificationMessage': async
+      'App\Messenger\Messages\UserCompleteNotificationMessage': async
+      'App\Domain\Notifications\Messages\PartnersMark\Message\SendSlackNotificationByPartnersMarkMessage': async
+      'App\Domain\Notifications\Messages\Client\DealerTestDrive\SmsNotification\SmsNotificationMessage': async
+      'App\Domain\Notifications\Messages\Driver\TestDrive\TgMessage\SendTelegramMessageByDriveInterface': async
+      'App\Domain\Notifications\Messages\Call\Message\CheckCallStatusMessage': async
+
+      # marketing
+      App\Domain\Marketing\Event\UpdateDriveEvent: async
+
+      # domain event bus
+      'CarlBundle\EventBus\BusEventInterface': event_bus
+      #mercure
+      'App\Messenger\Messages\Sse\SsePaymentNotificationMessage': async
+
+      #CarPrice
+      'App\Domain\Infrastructure\CarPrice\Messenger\Message\GetCarPriceInformationMessage': async
+
+      'WidgetBundle\Messenger\Event\NewWidgetLeadAsyncEvent': async

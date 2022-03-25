@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tests" type="CodeceptionConfigurationType" factoryName="Codeception" singleton="false">
+    <CommandLine workingDirectory="$PROJECT_DIR$">
+      <PhpTestInterpreterSettings>
+        <option name="interpreterName" value="carl-tests:latest" />
+      </PhpTestInterpreterSettings>
+    </CommandLine>
+    <PhpTestRunnerSettings configuration_file="$PROJECT_DIR$/codeception.yml" method="" scope="Type" selected_type="unit" />
+    <method v="2" />
+  </configuration>
+</component>

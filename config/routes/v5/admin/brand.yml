@@ -1,0 +1,37 @@
+## Методы администратора для работы с брендами
+
+# Отдает список брендов
+admin_get_brand_list:
+    path:       /admin/brand
+    controller: App\Domain\Core\Brand\Controller\AdminController:list
+    methods:    GET
+
+# Отдает бренд по его идентификатору
+admin_get_brand:
+    path:       /admin/brand/{brandId}
+    controller: App\Domain\Core\Brand\Controller\AdminController:getBrand
+    methods:    GET
+    requirements:
+        brandId: '\d+'
+
+# Создание нового бренда
+create_new_brand:
+    path:       /admin/brand
+    controller: App\Domain\Core\Brand\Controller\AdminController:create
+    methods:    POST
+
+# Обновление бренда
+update_brand:
+    path:       /admin/brand/{brandId}
+    controller: App\Domain\Core\Brand\Controller\AdminController:update
+    methods:    POST
+    requirements:
+        brandId: '\d+'
+
+# Удаление бренда
+delete_brand:
+    path:       /admin/brand/{brandId}
+    controller: App\Domain\Core\Brand\Controller\AdminController:delete
+    methods:    DELETE
+    requirements:
+        brandId: '\d+'

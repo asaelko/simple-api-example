@@ -1,0 +1,7 @@
+# Отдает список всех заявок клиента к CARL или к партнерам
+get_client_requests:
+  path:       /client/requests/{type}
+  controller: App\Domain\Core\Client\Controller\RequestController::getList
+  methods:    GET
+  requirements:
+    type: '(all|drives|offers)'

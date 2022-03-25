@@ -1,0 +1,7 @@
+# Специфические методы для фильтрации по сущностям дешборда для различных ролей
+
+## Метод отдает только те виджеты, по которым были тест-драйвы, с учетом роли пользователя
+get_drive_widget_filters:
+  path:       /dashboard/filters/drive/widgets
+  controller: App\Domain\Core\Dashboard\Controller\FilterController:getWidgetWithDrivesFilter
+  methods:    GET

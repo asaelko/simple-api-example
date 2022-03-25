@@ -1,0 +1,228 @@
+parameters:
+    mailer_transport:                              ~
+    mailer_host:                                   ~
+    mailer_user:                                   ~
+    mailer_password:                               ~
+
+    # ban clients for free test drives
+    allow_repeat_free_test_drive:                  0
+    allow_free_test_drive_after_three_free_drives: 0
+
+    log_index: '%env(ELASTIC_LOGS_DSN)%'
+
+    # white label apps configs
+    wl:
+        main:
+            brands: [ ]
+            dealers: [ ]
+            subscriptions: [ ]
+            mail:
+                sender:
+                    name: 'CARL'
+                    mail: 'notifications@carl-drive.ru'
+            apns:
+                topic: 'ru.carl.drive.app'
+            firebase:
+                auth_key:     '%env(PUSH_FIREBASE_AUTH_KEY)%'
+                package_name: 'ru.carl.drive.app'
+            facebook:
+                version: '%env(FACEBOOK_API_VERSION)%'
+                app_id:  '%env(FACEBOOK_APP_ID)%'
+                secret:  '%env(FACEBOOK_APP_SECRET)%'
+        audi:
+            brands: [ 31 ]
+            dealers: [ 107 ]
+            subscriptions: [ 1 ]
+            mail:
+                sender:
+                    name: 'Audi City Moscow'
+                    mail: 'AudiCityMoscow@carl-drive.ru'
+            apns:
+                topic: 'ru.carl.audi.app'
+            firebase:
+                auth_key:     '%env(PUSH_FIREBASE_AUTH_KEY)%'
+                package_name: 'ru.carl.drive.app.audi'
+            facebook:
+                version: '%env(FACEBOOK_AUDI_API_VERSION)%'
+                app_id:  '%env(FACEBOOK_AUDI_APP_ID)%'
+                secret:  '%env(FACEBOOK_AUDI_APP_SECRET)%'
+        chery:
+            brands: [ 71 ]
+            dealers: [ 114 ]
+            subscriptions: [ ]
+            mail:
+                sender:
+                    name: 'Chery'
+                    mail: 'Chery@carl-drive.ru'
+            apns:
+                topic: 'ru.carl.chery.app'
+            firebase:
+                auth_key: '%env(PUSH_FIREBASE_AUTH_KEY)%'
+                package_name: 'ru.carl.drive.app.chery'
+            facebook:
+                version: '%env(FACEBOOK_CHERY_API_VERSION)%'
+                app_id: '%env(FACEBOOK_CHERY_APP_ID)%'
+                secret: '%env(FACEBOOK_CHERY_APP_SECRET)%'
+
+    # yandex turboapp config
+    yandex:
+        auth:
+            id:       '%env(resolve:YANDEX_ID)%'
+            secret:   '%env(resolve:YANDEX_SECRET)%'
+            callback: '%env(resolve:YANDEX_CALLBACK)%'
+        kassa:
+            api_key:  '%env(resolve:YANDEX_KASSA_API_KEY)%'
+            api_url:  '%env(resolve:YANDEX_KASSA_API_URL)%'
+            callback: '%env(resolve:YANDEX_KASSA_CALLBACK)%'
+            jwt_key:  '%env(resolve:YANDEX_KASSA_JWT)%'
+
+    driver_bot:
+        uri: '%env(resolve:DRIVER_BOT_URI)%'
+
+    ivideon:
+        username: '%env(IVIDEON_USER_NAME)%'
+        password: '%env(IVIDEON_USER_PASSWORD)%'
+        client_id: '%env(IVIDEON_CLIENT_ID)%'
+        client_secret: '%env(IVIDEON_CLIENT_SECRET)%'
+
+    website_domain:                                '%env(WEBSITE_DOMAIN)%'
+    secret:                                        '%env(APP_SECRET)%'
+    host:                                          '%env(CURRENT_HOST)%'
+    image_base:                                    '%env(IMAGE_BASE)%'
+
+    #env
+    env_key:                                       '%env(ENV_KEY)%'
+
+    # redis
+    redis_dsn:                                     '%env(REDIS_STORAGE_URL)%'
+    cache_dsn:                                     '%env(REDIS_CACHE_URL)%'
+
+    #messenger
+    async_bus:                                     '%env(REDIS_MESSENGER_TRANSPORT_URL)%'
+    event_bus:                                     '%env(REDIS_EVENT_BUS_TRANSPORT_URL)%'
+    failed_bus:                                    '%env(REDIS_FAILED_BUS_TRANSPORT_URL)%'
+
+    facebook_app_id:                               '%env(FACEBOOK_APP_ID)%'
+    facebook_app_secret:                           '%env(FACEBOOK_APP_SECRET)%'
+    facebook_api_version:                          '%env(FACEBOOK_API_VERSION)%'
+
+    sms_login:                                     '%env(SMS_LOGIN)%'
+    sms_password:                                  '%env(SMS_PASSWORD)%'
+
+    amazon_s3_bucket:                              'ivideon'
+    amazon_s3_api_key:                             '%env(AMAZON_S3_API_KEY)%'
+    amazon_s3_api_secret:                          '%env(AMAZON_S3_API_SECRET)%'
+
+    sparkpost_api_key:                             '%env(SPARKPOST_API_KEY)%'
+
+    google_geocoder_key:                           '%env(GOOGLE_GEOCODER_KEY)%'
+    google_static_map_key:                         '%env(GOOGLE_STATIC_MAP_KEY)%'
+
+    # tinkoff merchant api data
+    tinkoff_terminal_key:                          '%env(TINKOFF_TERMINAL_KEY)%'
+    tinkoff_secret_key:                            '%env(TINKOFF_SECRET_KEY)%'
+    tinkoff_api_url:                               '%env(TINKOFF_API_URL)%'
+
+    # tinkoff merchant api data for  web
+    tinkoff_web_terminal_key:                      '%env(TINKOFF_WEB_TERMINAL_KEY)%'
+    tinkoff_web_secret_key:                        '%env(TINKOFF_WEB_SECRET_KEY)%'
+    tinkoff_web_api_url:                           '%env(TINKOFF_WEB_API_URL)%'
+
+    # sentry
+    sentry_dsn_key:                                '%env(SENTRY_DSN)%'
+
+    #amoCRM credentials
+    amocrm_subdomain:                              '%env(AMOCRM_SUBDOMAIN)%'
+    amocrm_login:                                  '%env(AMOCRM_LOGIN)%'
+    amocrm_key:                                    '%env(AMOCRM_KEY)%'
+
+    # data for upload audio to telegram chanel
+    telegram_bot_token:                            '%env(TELEGRAM_BOT_TOKEN)%'
+    telegram_chat_id:                              '%env(TELEGRAM_CHAT_ID)%'
+
+    # data for send request for purchase in slack
+    slack_api_url:                                 '%env(resolve:SLACK_API_URL)%'
+    slack_bot_username:                            '%env(SLACK_BOT_USERNAME)%'
+    slack_bot_token:                               '%env(SLACK_BOT_TOKEN)%'
+    slack_channel_name_partners_dealers:           '%env(SLACK_CHANNEL_NAME_PARTNERS_DEALERS)%'
+    slack_channel_name_server_notifications:       '%env(SLACK_CHANNEL_NAME_SERVER_NOTIFICATIONS)%'
+    slack_channel_name_notification_users:         '%env(SLACK_CHANNEL_NAME_NOTIFICATION_USERS)%'
+    slack_channel_name_carl_geniuses:              '%env(SLACK_CHANNEL_NAME_CARL_GENIUSES)%'
+    slack_channel_name_carl_geniuses_timetable:    '%env(SLACK_CHANNEL_NAME_CARL_GENIUSES_TIMETABLE)%'
+    slack_channel_name_dealer_stocks:              '%env(SLACK_CHANNEL_NAME_DEALER_STOCKS)%'
+    slack_channel_name_carl_marketing_analytics:   '%env(SLACK_CHANNEL_NAME_MARKETING_ANALYTICS)%'
+    slack_channel_name_equipment:                  '%env(SLACK_CHANNEL_NAME_EQUIPMENT)%'
+
+    # emarsys auth data
+    emarsys_username:                              '%env(EMARSYS_USER_NAME)%'
+    emarsys_secret:                                '%env(EMARSYS_SECRET)%'
+    emarsys_api_url:                               '%env(EMARSYS_API_URL)%'
+
+    # basebuy auth data
+    basebuy_api_url:                               '%env(BASEBUY_API_URL)%'
+    basebuy_api_key:                               '%env(BASEBUY_API_KEY)%'
+
+    # gorush service
+    gorush_service_url:                            '%env(GORUSH_SERVICE_URL)%'
+
+    # selectel cdn
+    cdn_api_key:                                   '%env(CDN_API_KEY)%'
+    cdn_secret_key:                                '%env(CDN_SECRET_KEY)%'
+
+    #amo crm
+    amo.client.id:                                  '%env(AMO_CLIENT_KEY)%'
+    amo.client.secret:                              '%env(AMO_CLIENT_SECRET)%'
+    amo.client.redirect.url:                        '%env(AMO_CLIENT_REDIRECT)%'
+    amo.client.domain:                              '%env(AMO_DOMAIN)%'
+    amo.client.token.path:                          '%kernel.project_dir%/var/amocrm/token.json'
+    #lead
+    amo.status.id.booking:                          '%env(AMO_STATUS_ID_BOOKING)%'
+    amo.pipeline.id.booking:                        '%env(AMO_PIPELINE_ID_BOOKING)%'
+    amo.status.id.drive:                            '%env(AMO_STATUS_ID_DRIVE)%'
+    amo.pipeline.id.drive:                          '%env(AMO_PIPELINE_ID_DRIVE)%'
+    amo.status.id.canceled:                         '%env(AMO_STATUS_ID_CANCELED)%'
+    amo.pipeline.id.canceled:                       '%env(AMO_PIPELINE_ID_CANCELED)%'
+
+    amo.field.date.registration:                    '%env(AMO_DATE_REGISTRATION)%'
+    amo.field.date.leave:                           '%env(AMO_DATE_LEAVE)%'
+    amo.field.address:                              '%env(AMO_ADDRESS)%'
+    amo.field.auto.start:                           '%env(AMO_AUTO_START)%'
+    amo.field.auto.end:                             '%env(AMO_AUTO_END)%'
+    amo.field.source.type:                          '%env(AMO_SOURCE_TYPE)%'
+    amo.field.source.name:                          '%env(AMO_SOURCE_NAME)%'
+    amo.field.utm:                                  '%env(AMO_UTM)%'
+
+    amo.field.auto:                                 '%env(AMO_AUTO)%'
+    amo.field.date.drive:                           '%env(AMO_DRIVE_DATE)%'
+    amo.field.buy.from:                             '%env(AMO_BY_FROM)%'
+    amo.field.buy.to:                               '%env(AMO_BUY_TO)%'
+    amo.field.credit:                               '%env(AMO_CREDIT)%'
+    amo.field.leasing:                              '%env(AMO_LEASING)%'
+    amo.field.buy.probability:                      '%env(AMO_BUY_PROBABILITY)%'
+    amo.field.reaction:                             '%env(AMO_REACTION)%'
+    #contact
+    amo.field.name:                                 '%env(AMO_CONTACT_NAME)%'
+    amo.field.phone:                                '%env(AMO_CONTACT_PHONE)%'
+    amo.field.count.td:                             '%env(AMO_CONTACT_COUNT_TD)%'
+    #manager
+    amo.manager.id:                                 '%env(AMO_MANAGER_ID)%'
+    #GPB
+    gpb:
+        base_url:                                   '%env(GPB_BASE_URL)%'
+        login:                                      '%env(GPB_LOGIN)%'
+        password:                                   '%env(GPB_PASSWORD)%'
+    #UIS
+    uis:
+        login:                                      '%env(UIS_LOGIN)%'
+        password:                                   '%env(UIS_PASSWORD)%'
+        url_data:                                   '%env(UIS_URL_DATA)%'
+        url_call:                                   '%env(UIS_URL_CALL)%'
+        version_call:                               '%env(UIS_VERSION_CALL)%'
+        version_data:                               '%env(UIS_VERSION_DATA)%'
+        call_api_key:                               '%env(UIS_CALL_API_KEY)%'
+        call_number:                                '%env(UIS_CALL_NUMBER)%'
+        call_center_id:                             '%env(CALL_CENTER_USER_ID)%'
+        call_center_phone:                          '%env(CALL_CENTER_USER_PHONE)%'
+    #CAR PRICE
+    carprice.key:                                   '%env(CAR_PRICE_KEY)%'
+    cookie.site:                                    '%env(CARL_COOKIE_SITE)%'

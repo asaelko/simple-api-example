@@ -1,0 +1,5 @@
+sentry:
+  dsn: '%sentry_dsn_key%'
+  options:
+    environment: "%kernel.environment%"
+    error_types: E_ALL

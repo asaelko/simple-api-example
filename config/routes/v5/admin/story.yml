@@ -1,0 +1,29 @@
+## Методы для работы с историями для админа
+
+# Метод запроса списка текущих историй
+get_stories_for_admin:
+    path: /admin/stories
+    controller: App\Domain\Core\Story\Controller\AdminStoryController:getListAction
+    methods: GET
+
+# Метод запроса историй для показа клиенту для конкретного бренда
+create_story:
+    path: /admin/stories
+    controller: App\Domain\Core\Story\Controller\AdminStoryController:createAction
+    methods: POST
+
+# Метод редактирования истории по её ID
+edit_story:
+    path: /admin/story/{storyId}
+    controller: App\Domain\Core\Story\Controller\AdminStoryController:editAction
+    methods: PUT
+    requirements:
+        storyId: '\d+'
+
+# Метод переноса истории в архив
+archive_story:
+    path: /admin/story/{storyId}
+    controller: App\Domain\Core\Story\Controller\AdminStoryController:archiveAction
+    methods: DELETE
+    requirements:
+        storyId: '\d+'

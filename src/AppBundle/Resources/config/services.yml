@@ -1,0 +1,63 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    guzzle.client:
+        class: GuzzleHttp\Client
+
+    AppBundle\MessageHandler\:
+        resource: '../../MessageHandler/*'
+
+    # SYSTEM SERVICES
+    app.json_view_response_handler:
+        class: AppBundle\ViewResponseHandler\JsonViewResponseHandler
+        public: true
+
+    AppBundle\Security\TokenAuthenticator:
+        public: false
+
+    AppBundle\Security\PasswordUserAuthenticator:
+        public: false
+
+    AppBundle\Security\PasswordDriverAuthenticator:
+        public: false
+
+    AppBundle\Service\TokenGenerator:
+        public: true
+
+    AppBundle\Service\AppConfig:                      ~
+
+    # MAIL SERVICES
+    AppBundle\Service\Mail\MailService:               ~
+
+    # SLACK SERVICES
+    AppBundle\Service\Slack\SlackService:
+
+    AppBundle\Service\Slack\SlackClient:
+        $slackApiUrl: '%env(resolve:SLACK_API_URL)%'
+        $slackBotUsername: '%env(resolve:SLACK_BOT_USERNAME)%'
+        $slackBotToken: '%env(resolve:SLACK_BOT_TOKEN)%'
+
+    # Phone services
+
+    AppBundle\Service\Phone\PhoneService:
+        arguments:
+            $HttpClient: '@guzzle.client'
+            $authLogin: '%sms_login%'
+            $authPassword: '%sms_password%'
+
+    AppBundle\Service\Phone\PhoneServiceInterface: '@AppBundle\Service\Phone\PhoneService'
+
+    AppBundle\EventListener\ApplicationTypeListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
+
+    AppBundle\EventListener\RequestMetricsListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.response }
+
+    Okvpn\Bundle\DatadogBundle\Client\DogStatsInterface: '@okvpn_datadog.client'
+
+    AppBundle\Service\CDN\SelectelCDNUploader: ~

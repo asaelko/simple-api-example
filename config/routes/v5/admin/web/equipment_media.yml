@@ -1,0 +1,24 @@
+# Просмотр добавленных к комплектации медиа
+show_equipment_media:
+  path: /admin/equipment/{equipmentId}/media
+  controller: App\Domain\Core\Equipment\Controller\EquipmentMediaController:showAction
+  methods: GET
+  requirements:
+    equipmentId: '\d+'
+
+# Добавление медиа к комплектации
+add_equipment_media_action:
+  path: /admin/equipment/{equipmentId}/media
+  controller: App\Domain\Core\Equipment\Controller\EquipmentMediaController:addAction
+  methods: POST
+  requirements:
+    equipmentId: '\d+'
+
+# Удаление медиа из комплектации
+delete_equipment_media:
+  path: /admin/equipment/{equipmentId}/media/{equipmentMediaId}
+  controller: App\Domain\Core\Equipment\Controller\EquipmentMediaController:deleteAction
+  methods: DELETE
+  requirements:
+    equipmentId: '\d+'
+    equipmentMediaId: '\d+'

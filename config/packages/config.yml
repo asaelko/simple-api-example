@@ -1,0 +1,9 @@
+parameters:
+    locale: en
+
+# кастомная событийная модель
+gpslab_domain_event:
+    bus: 'listener_located'
+    queue: 'pull_memory'
+    locator: 'symfony'
+    publish_on_flush: true

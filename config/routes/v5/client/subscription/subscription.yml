@@ -1,0 +1,41 @@
+# Подписка
+
+# Отдает партнеров, предоставляющих подписку для модели
+get_subscriptions_by_model:
+  path:       /subscription/model/{modelId}
+  controller: App\Domain\Core\Subscription\Controller\Client\SubscriptionClientController::getSubscriptionsList
+  methods:    GET
+  requirements:
+    modelId: '\d+'
+
+# Создает запрос на подписку на модель авто
+create_subscription_request:
+  path:       /subscription/model/{subscriptionModelId}/request
+  controller: App\Domain\Core\Subscription\Controller\Client\SubscriptionClientController::createSubscriptionRequest
+  methods:    POST
+  requirements:
+    subscriptionModelId: '\d+'
+
+# Создает анонимный запрос на подписку на модель авто
+create_anon_subscription_request:
+  path:       /web/subscription/model/{subscriptionModelId}/request
+  controller: App\Domain\Core\Subscription\Controller\Client\SubscriptionClientController::createAnonSubscriptionRequest
+  methods:    POST
+  requirements:
+    modelId: '\d+'
+
+# Создает запрос на подписку на модель авто
+create_subscription_query:
+  path:       /subscription/model/{modelId}/query
+  controller: App\Domain\Core\Subscription\Controller\Client\SubscriptionClientController::createSubscriptionQuery
+  methods:    POST
+  requirements:
+    subscriptionModelId: '\d+'
+
+# Создает анонимный запрос на подписку на модель авто
+create_anon_subscription_query:
+  path:       /web/subscription/model/{modelId}/query
+  controller: App\Domain\Core\Subscription\Controller\Client\SubscriptionClientController::createAnonSubscriptionQuery
+  methods:    POST
+  requirements:
+    modelId: '\d+'

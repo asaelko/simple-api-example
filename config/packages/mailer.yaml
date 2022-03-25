@@ -1,0 +1,5 @@
+framework:
+    mailer:
+        transports:
+            main: '%env(CARL_MAILER_DSN)%'
+            audi: '%env(AUDI_MAILER_DSN)%'

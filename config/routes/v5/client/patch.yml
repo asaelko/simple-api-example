@@ -1,0 +1,25 @@
+## Методы для работы с обновлением клиента
+
+# Метод запроса кода подтверждения телефона для клиента
+send_phone_verification_code_for_change_phone:
+    path:       /client/patch/get-code-for-change-phone
+    controller: App\Domain\Core\Client\Controller\ProfileController:sendCodeForChangePhone
+    methods:    POST
+
+# Метод подтверждения телефона клиента полученным авторизационным кодом
+check_phone_verification_code_for_change_phone:
+    path:       /client/patch/check-code-for-change-phone
+    controller: App\Domain\Core\Client\Controller\ProfileController:changePhoneAfterVerification
+    methods:    POST
+
+# Метод отправки письма с подтверждением адреса для смены или указания почтового адреса клиента
+send_email_verification_for_client:
+    path:       /client/patch/email
+    controller: App\Domain\Core\Client\Controller\ProfileController:processRequestForChangeEmail
+    methods:    POST
+
+# Метод для обновления пуш-токена клиента
+update_client_push_token:
+    path:       /client/patch/phone-token
+    controller: App\Domain\Core\Client\Controller\ProfileController:updatePushToken
+    methods:    POST

@@ -1,0 +1,7 @@
+## Методы статистики для администратора
+
+# Получаем статистику офферов по дилерам и моделям
+admin_get_data_drive_offers:
+    path:       /admin/statistic/dealer/drive-offers
+    controller: CarlBundle\Controller\v500\Admin\AdminStatisticsController::getDataForOffersRequestBlock
+    methods:    GET

@@ -1,0 +1,8 @@
+framework:
+    cache:
+        # Unique name of your app: used to compute stable namespaces for cache keys.
+        prefix_seed:            backend
+
+        # Redis
+        app:                    cache.adapter.redis
+        default_redis_provider: '%cache_dsn%'

@@ -1,0 +1,29 @@
+# методы для работы с масс-пушами от имени администратора
+
+# Получаем список масспушей
+admin_get_mass_pushes:
+    path:       /admin/mass-pushes
+    controller: App\Domain\Notifications\MassPush\Controller\MassPushController::listAction
+    methods:    GET
+
+# Создаем новый масспуш
+admin_new_mass_push:
+    path:       /admin/mass-pushes
+    controller: App\Domain\Notifications\MassPush\Controller\MassPushController::createAction
+    methods:    POST
+
+# Редактируем масспуш
+admin_edit_mass_push:
+    path:       /admin/mass-pushes/{notificationId}
+    controller: App\Domain\Notifications\MassPush\Controller\MassPushController::editAction
+    methods:    POST
+    requirements:
+        notificationId: '\d+'
+
+# Отменяем отправку масспуша
+admin_cancel_mass_push:
+    path:       /admin/mass-pushes/{notificationId}
+    controller: App\Domain\Notifications\MassPush\Controller\MassPushController::cancelAction
+    methods:    DELETE
+    requirements:
+        notificationId: '\d+'

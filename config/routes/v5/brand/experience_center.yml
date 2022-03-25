@@ -1,0 +1,8 @@
+## Методы для функционала экспириенс-центров для брендов
+
+# Создаем новые центры
+get_requests_to_experience_center_for_brand_manager:
+    path:       /brand/experience-center/slots
+    controller: App\Domain\Core\ExperienceCenters\Controller\BrandController::getRequests
+    methods:    GET
+

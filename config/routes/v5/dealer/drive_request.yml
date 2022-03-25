@@ -1,0 +1,32 @@
+## Методы для функционала "Заявки на тест-драйв в дилерский центр", функционал дилера
+
+# Получаем все доступные дилеру модели по привязанным к нему брендам
+get_all_models_by_brand:
+    path:       /dealer/get-all-models
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::getDealerModelsByBrands
+    methods:    GET
+
+# Получаем модели дилера, для которых он отметил возможность прохождения тест-драйва
+get_dealer_model_for_test_drive:
+    path:       /dealer/models-for-test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::getDealerTestDriveModels
+    methods:    GET
+
+# Обновляем список моделей для дилера, на которых можно пройти тест-драйв
+update_dealer_model_for_test_drive:
+    path:       /dealer/update-models-for-test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::updateDealerTestDriveModel
+    methods:    POST
+
+# Получаем список заявок на прохождение тест-драйва в ДЦ
+get_requests_for_test_drive:
+    path:       /dealer/get-requests-for-test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::getTestDriveRequestsForDealer
+    methods:    GET
+
+# Обновляем заявку на прохождение тест-драйва в ДЦ
+update_request_for_test_drive:
+    path:       /dealer/update-request-for-test-drive
+    controller: CarlBundle\Controller\v500\TestDrive\TestDriveRequestController::changeRequestStatusAction
+    methods:    POST
+

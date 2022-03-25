@@ -1,0 +1,43 @@
+# Методы для работы с партнерами по подпискам
+
+# Получение стока по подпискам
+dashboard_subscription_stock_list:
+  path:       /dashboard/admin/subscription/stock
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionStockController::listStock
+  methods:    GET
+
+# Получение фильтров стока по подпискам
+dashboard_subscription_stock_filter:
+  path:       /dashboard/admin/subscription/stock/filter
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionStockController::getStockFilters
+  methods:    GET
+
+# Получение конкретного стока по подпискам
+dashboard_subscription_stock_get:
+  path:       /dashboard/admin/subscription/stock/{stockId}
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionStockController::getStockModel
+  methods:    GET
+  requirements:
+    stockId: '\d+'
+
+# Создание стока по подпискам
+dashboard_subscription_stock_create:
+  path:       /dashboard/admin/subscription/stock
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionStockController::createStockModel
+  methods:    POST
+
+# Изменение стока по подпискам
+dashboard_subscription_stock_update:
+  path:       /dashboard/admin/subscription/stock/{stockId}
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionStockController::updateStockModel
+  methods:    POST
+  requirements:
+    stockId: '\d+'
+
+# Изменение стока по подпискам
+dashboard_subscription_stock_delete:
+  path:       /dashboard/admin/subscription/stock/{stockId}
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionStockController::deleteStockModel
+  methods:    DELETE
+  requirements:
+    stockId: '\d+'

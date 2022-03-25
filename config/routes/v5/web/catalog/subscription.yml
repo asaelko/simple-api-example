@@ -1,0 +1,5 @@
+# Каталог моделей авто для просмотра подписок
+get_subscription_catalog:
+  path: /web/catalog/subscription/list
+  controller: App\Domain\WebSite\Catalog\Controller\SubscriptionController:listAction
+  methods: GET

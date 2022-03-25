@@ -1,0 +1,5 @@
+# Каталог моделей авто для просмотра лонг-драйвов
+get_long_drive_catalog:
+  path: /web/catalog/long-drive/list
+  controller: App\Domain\WebSite\Catalog\Controller\LongDriveController:listAction
+  methods: GET

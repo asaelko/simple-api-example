@@ -1,0 +1,26 @@
+fxp_security:
+  role_class:                    CarlBundle\Entity\Role
+  permission_class:              CarlBundle\Entity\Permission
+  object_filter:
+    enabled:                    false # Enable the object filter (optional)
+  role_hierarchy:
+    enabled:                    false # Enable the role hierarchy for organizational context (optional)
+    cache:                      null # Defined the service cache for role hierarchy (optional)
+  security_voter:
+    role_security_identity:     false # Override the Symfony Role Hierarchy Voter (optional)
+  sharing:
+    enabled:                    false # (optional)
+    identity_types:
+      AppBundle\Entity\User:
+        roleable:           false # (optional)
+          AppBundle\Entity\Role:
+            permissible:        false # (optional)
+  doctrine:
+    orm:
+      object_filter_voter:    false # Enable the Doctrine ORM Collection Object Filter (optional)
+      listeners:
+        permission_checker: false # Enable the Doctrine ORM Permission Checker Listener (optional)
+        object_filter:      false # Enable the Doctrine ORM Object Filter Listener(optional)
+        role_hierarchy:     false # Enable the Doctrine ORM listener of role hierarchy (optional)
+        private_sharing:    false # Enable the 'private' sharing filter type (optional)
+        sharing_delete:     false # Enable the auto sharing delete when the entity is deleted (optional)

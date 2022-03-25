@@ -1,0 +1,10 @@
+actor: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - Symfony:
+              app_path: 'src'
+              var_path: 'var'
+              environment: 'dev'
+              debug: true
+        - Helper\Unit

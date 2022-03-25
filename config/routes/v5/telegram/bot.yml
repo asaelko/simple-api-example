@@ -1,0 +1,17 @@
+## Методы для работы телеграм-бота консультантов
+
+# Авторизация по номеру мобильного телефона
+telegram_bot_auth:
+    path:       /telegram/auth
+    controller: CarlBundle\Controller\v500\TelegramBot\AuthController::authAction
+    methods:    GET
+
+telegram_bot_survey_list:
+    path:       /telegram/survey-list
+    controller: CarlBundle\Controller\v500\TelegramBot\SurveyController::getConsultantsListForSurvey
+    methods:    GET
+
+telegram_bot_survey_result:
+    path:       /telegram/survey-result
+    controller: CarlBundle\Controller\v500\TelegramBot\SurveyController::postSurveyResult
+    methods:    POST

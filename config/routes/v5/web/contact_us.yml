@@ -1,0 +1,6 @@
+# Управление страницей "партнерам"
+
+partner_contact_us:
+  path: web/partners/contact-us
+  controller: App\Domain\Core\Web\Controller\Client\PartnerController:contactUs
+  methods: POST

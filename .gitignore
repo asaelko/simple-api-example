@@ -1,0 +1,10 @@
+/.idea/*
+.DS_Store
+/app/config/parameters.yml
+###> symfony/framework-bundle ###
+.env
+.env.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

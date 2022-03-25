@@ -1,0 +1,8 @@
+imap:
+  connections:
+    stock:
+      mailbox: "{imap.gmail.com:993/imap/ssl/novalidate-cert}"
+      username: '%env(STOCK_MAIL_NAME)%'
+      password: '%env(STOCK_MAIL_PASSWORD)%'
+      server_encoding: "UTF-8"
+      attachments_dir: "%kernel.project_dir%/var/imap/attachments"

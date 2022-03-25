@@ -1,0 +1,74 @@
+security:
+    encoders:
+      legacy_bcrypt:
+        algorithm: bcrypt
+        cost: 12
+      CarlBundle\Entity\User:
+        algorithm: auto
+        cost:       12
+        migrate_from:
+          - legacy_bcrypt
+      CarlBundle\Entity\Driver:
+        algorithm: auto
+        cost:       12
+        migrate_from:
+          - legacy_bcrypt
+
+    providers:
+        chain_provider:
+            chain:
+                providers: [client_db_provider, user_db_provider, driver_db_provider]
+        client_db_provider:
+            entity:
+                class: AppBundle:Client
+                property: token
+        user_db_provider:
+            entity:
+                class: AppBundle:User
+        driver_db_provider:
+            entity:
+                class: AppBundle:Driver
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        driver_password_auth:
+            stateless: true
+            provider: driver_db_provider
+            pattern: ^/(driver\/auth)
+            guard:
+                authenticators:
+                    - AppBundle\Security\PasswordDriverAuthenticator
+        user_password_auth:
+            stateless: true
+            provider: user_db_provider
+            pattern: ^/(auth)
+            guard:
+                authenticators:
+                    - AppBundle\Security\PasswordUserAuthenticator
+        main:
+            pattern: ^/
+            stateless: true
+            anonymous: ~
+            provider: chain_provider
+            guard:
+                authenticators:
+                    - AppBundle\Security\TokenAuthenticator
+
+    access_control:
+        - { path: ^/client/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/load, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/phone_confirm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/verified/email, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client, roles: [ROLE_ADMIN_USER, ROLE_API_USER, ROLE_CLIENT, ROLE_DRIVER] }
+        - { path: ^/v5/client/auth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/doc, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/v5/web, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/v5/client/, roles: [ROLE_ADMIN_USER, ROLE_API_USER] }
+        - { path: ^/v5/dealer/, roles: [ROLE_ADMIN_USER, ROLE_DEALER_MANAGER] }
+        - { path: ^/v5/admin/web/page, roles: [ROLE_ADMIN_USER, ROLE_MARKETOLOG] }
+        - { path: ^/v5/admin/, roles: [ROLE_ADMIN_USER] }
+        - { path: ^/v5/driver/, roles: [ROLE_DRIVER] }
+        - { path: ^/v5/dashboard/, roles: [ROLE_ADMIN_USER, ROLE_DRIVER_MANAGER, ROLE_CALL_CENTER, ROLE_DEALER_MANAGER, ROLE_BRAND_MANAGER, ROLE_LONGDRIVE_PARTNER] }
+        - { path: ^/v5/sync/, roles: [ROLE_DEALER_MANAGER, ROLE_BRAND_MANAGER] }

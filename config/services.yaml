@@ -1,0 +1,57 @@
+parameters:
+    telegram.openssl_keys_file_dir: "%kernel.project_dir%/var/telegram/"
+    telegram.openssl_public_key: "%env(resolve:TG_OPENSSL_PUBLIC_KEY)%"
+    rse.xlsx_file_dir: "%kernel.project_dir%/var/rse/"
+    dadata.token: '%env(resolve:DADATA_TOKEN)%'
+    dadata.secret: '%env(resolve:DADATA_SECRET)%'
+
+    marketing_dash.differture.project_id: '%env(resolve:DIFFERTURE_PROJECT_ID)%'
+
+services:
+    _defaults:
+        autowire:      true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    GeoIp2\Database\Reader:
+      alias: 'geoip2.reader'
+      public: true
+
+    # marketing dash sync services
+    App\Domain\Marketing\Differture\DiffertureClient:             ~
+    App\Domain\Marketing\Interfaces\MarketingClientInterface:     '@App\Domain\Marketing\Differture\DiffertureClient'
+
+    # push async sender
+    App\Domain\Notifications\Push\Sender\GoRush\GoRushPushSender: ~
+    App\Domain\Notifications\Push\Sender\PushSenderInterface:     '@App\Domain\Notifications\Push\Sender\GoRush\GoRushPushSender'
+
+    # TODO Надо будет поменять когда вынесем еще контроллеры и все остальное
+    App\:
+        resource: '../src/*'
+        exclude:  '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,AppBundle,DealerBundle,CallCenterBundle,CarlBundle,WidgetBundle,Monolog}'
+
+
+    CarlBundle\EventListener\DealersTestDriveListener:
+        tags:
+            - name: 'doctrine.event_listener'
+              event: 'postPersist'
+              priority: 600
+              connection: 'default'
+            - name: 'doctrine.event_listener'
+              event: 'preUpdate'
+              priority: 500
+              connection: 'default'
+
+    App\EventListener\PaymentTransactionListener:
+        tags:
+            - name: 'doctrine.event_listener'
+              event: 'postPersist'
+              priority: 500
+              connection: 'default'
+
+    _instanceof:
+        App\Domain\Core\Subscription\Partner\SubscriptionPartnerInterface:
+            tags: [ 'subscription.partner' ]
+
+    App\Domain\Core\Subscription\Command\LoadPartnersSubscriptionDataCommand:
+        arguments:
+            $partners: !tagged subscription.partner

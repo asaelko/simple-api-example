@@ -1,0 +1,29 @@
+# Методы для работы с партнерами по подпискам
+
+# Получение списка партнеров по подпискам
+dashboard_subscription_partners_list:
+  path:       /dashboard/admin/subscription/partners
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionPartnerController::listPartners
+  methods:    GET
+
+# Получение конкретного партнера по подпискам
+dashboard_subscription_partners_get:
+  path:       /dashboard/admin/subscription/partner/{partnerId}
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionPartnerController::getPartner
+  methods:    GET
+  requirements:
+    partnerId: '\d+'
+
+# Создание партнера по подпискам
+dashboard_subscription_partners_create:
+  path:       /dashboard/admin/subscription/partners
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionPartnerController::createPartner
+  methods:    POST
+
+# Изменение партнера по подпискам
+dashboard_subscription_partners_update:
+  path:       /dashboard/admin/subscription/partner/{partnerId}
+  controller: App\Domain\Core\Subscription\Controller\Admin\SubscriptionPartnerController::updatePartner
+  methods:    POST
+  requirements:
+    partnerId: '\d+'

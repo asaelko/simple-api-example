@@ -1,0 +1,13 @@
+## Методы для управления дилером от администратора
+
+# Получаем список видимых дилеру на странице поездок моделей
+admin_get_dealers_models:
+    path:       /admin/get-dealer-models
+    controller: CarlBundle\Controller\v500\Admin\AdminDealerController::getDealerModels
+    methods:    GET
+
+# Добавляем видимые дилеру на странице поездок модели
+admin_update_dealers_models:
+    path:       /admin/update-dealer-models
+    controller: CarlBundle\Controller\v500\Admin\AdminDealerController::updateDealerModels
+    methods:    POST

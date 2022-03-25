@@ -1,0 +1,43 @@
+# Методы для работы с партнерами по лонг-драйвам
+
+# Получение стока по лонг-драйвам
+dashboard_long_drive_stock_list:
+  path:       /dashboard/admin/long-drive/stock
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveStockController::listStock
+  methods:    GET
+
+# Получение фильтров стока по лонг-драйвам
+dashboard_long_drive_stock_filter:
+  path:       /dashboard/admin/long-drive/stock/filter
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveStockController::getStockFilters
+  methods:    GET
+
+# Получение конкретного стока по лонг-драйву
+dashboard_long_drive_stock_get:
+  path:       /dashboard/admin/long-drive/stock/{stockId}
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveStockController::getStockModel
+  methods:    GET
+  requirements:
+    stockId: '\d+'
+
+# Создание стока по лонг-драйву
+dashboard_long_drive_stock_create:
+  path:       /dashboard/admin/long-drive/stock
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveStockController::createStockModel
+  methods:    POST
+
+# Изменение стока по лонг-драйву
+dashboard_long_drive_stock_update:
+  path:       /dashboard/admin/long-drive/stock/{stockId}
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveStockController::updateStockModel
+  methods:    POST
+  requirements:
+    stockId: '\d+'
+
+# Изменение стока по лонг-драйву
+dashboard_long_drive_stock_delete:
+  path:       /dashboard/admin/long-drive/stock/{stockId}
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveStockController::deleteStockModel
+  methods:    DELETE
+  requirements:
+    stockId: '\d+'

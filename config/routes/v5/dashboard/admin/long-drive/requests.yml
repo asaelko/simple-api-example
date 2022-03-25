@@ -1,0 +1,14 @@
+# Лонг-драйвы
+
+# Получаем список запросов на подписку у партнера
+list_long_drives:
+  path:       /dashboard/admin/long-drive/request/list
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveRequestsController::getRequests
+  methods:    GET
+
+delete_long_drive_request:
+  path:       /dashboard/admin/long-drive/request/{requestId}
+  controller: App\Domain\Core\LongDrive\Controller\Admin\LongDriveRequestsController::deleteRequest
+  methods:    DELETE
+  requirements:
+    requestId: '\d+'

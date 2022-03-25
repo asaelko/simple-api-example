@@ -1,0 +1,13 @@
+#Методы для работы со звонками
+
+# Звонок от клиента
+make_client_call:
+  path:       /call/from-client
+  controller: App\Domain\Infrastructure\IpTelephony\Uis\Controller\UisController::makeClientCall
+  methods:    POST
+
+# Сохраниене истории звонка
+processing_call:
+  path:       /register/call
+  controller: App\Domain\Infrastructure\IpTelephony\Uis\Controller\UisController::registerCallAction
+  methods:    GET

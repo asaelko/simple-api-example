@@ -1,0 +1,18 @@
+## Методы для работы с регистрацией и авторизацией клиента
+
+# Метод запроса кода подтверждения телефона для клиента
+send_phone_verification_code:
+    path:       /client/auth/get-phone-code
+    controller: App\Domain\Core\Client\Controller\AuthController:sendPhoneVerificationCodeAction
+    methods:    POST
+
+# Метод подтверждения телефона клиента полученным авторизационным кодом
+check_phone_verification_code:
+    path:       /client/auth/check-phone-code
+    controller: App\Domain\Core\Client\Controller\AuthController:checkPhoneVerificationCodeAction
+    methods:    POST
+
+client_logout:
+    path:       /client/logout
+    controller: App\Domain\Core\Client\Controller\AuthController:logout
+    methods:    GET

@@ -1,0 +1,9 @@
+okvpn_datadog:
+  profiling: true
+  namespace: default
+  port: 8125
+  host: datadog-agent
+  doctrine: true        # Enable timing for sql query
+  exception: all        # Send event on exception
+  tags:                 # Default tags which sent with every request
+    - '%host%'

@@ -1,0 +1,7 @@
+stof_doctrine_extensions:
+    orm:
+        default:
+            loggable: true
+            softdeleteable: true
+    class:
+        loggable: App\Domain\System\EventListener\LoggableListener

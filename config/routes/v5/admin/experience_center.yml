@@ -1,0 +1,36 @@
+## Методы для функционала экспириенс-центров для брендов
+
+# Создаем новые центры
+create_center_request:
+    path:       /admin/experience-center
+    controller: App\Domain\Core\ExperienceCenters\Controller\AdminController::createCenterAction
+    methods:    POST
+
+update_center_request:
+    path:       /admin/experience-center/update
+    controller: App\Domain\Core\ExperienceCenters\Controller\AdminController::updateCenterAction
+    methods:    POST
+
+# Получаем центры
+get_center_request:
+    path:       /admin/experience-center
+    controller: App\Domain\Core\ExperienceCenters\Controller\AdminController::getCentersAction
+    methods:    GET
+
+# Создаем слоты
+create_center_slot_request:
+    path:       /admin/experience-center/slot
+    controller: App\Domain\Core\ExperienceCenters\Controller\AdminController::createScheduleAction
+    methods:    POST
+
+# получаем список запросом на посещение центра
+get_center_slot_request:
+    path:       /admin/experience-center/slot-and-request
+    controller: App\Domain\Core\ExperienceCenters\Controller\AdminController::getRequestsByBrand
+    methods:    GET
+
+# Отклоняем запрос на посещение центра
+decline_request:
+    path:       /admin/experience-center/request/decline
+    controller: App\Domain\Core\ExperienceCenters\Controller\AdminController::declineBook
+    methods:    POST

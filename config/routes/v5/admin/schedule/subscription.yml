@@ -1,0 +1,5 @@
+# Получить подписки на расписание на конкретные дни
+get_schedule_subscriptions:
+    path:       /admin/schedule/subscriptions
+    controller: App\Domain\Core\Dashboard\Controller\Schedule\ScheduleSubscriberController::getSubscriptions
+    methods:    GET

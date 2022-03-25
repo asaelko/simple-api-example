@@ -1,0 +1,14 @@
+admin_list_loan_providers:
+  path:       /admin/loan-provider/list
+  controller: App\Domain\Core\Loan\Controller\LoanAdminController::list
+  methods:    GET
+
+admin_get_loan_provider:
+  path:       /admin/loan-provider/get
+  controller: App\Domain\Core\Loan\Controller\LoanAdminController::getLoanProvider
+  methods:    GET
+
+admin_update_loan_provider:
+  path:       /admin/loan-provider/{providerId}/update
+  controller: App\Domain\Core\Loan\Controller\LoanAdminController::update
+  methods:    POST

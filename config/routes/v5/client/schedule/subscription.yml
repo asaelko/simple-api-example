@@ -1,0 +1,45 @@
+### Методы подписки на расписание для пользователя
+
+# Проверяем, есть ли подписка на расписание
+get_active_subscription:
+  path: /client/model/{modelId}/schedule/notification
+  controller: App\Domain\Core\Model\Controller\ScheduleNotificationController::getSubscription
+  methods: GET
+  requirements:
+    modelId: '\d+'
+
+# Получаем все подписки на расписания
+get_all_subscriptions:
+  path: /client/schedule/notifications
+  controller: App\Domain\Core\Model\Controller\ScheduleNotificationController::getAllSubscriptions
+  methods: GET
+
+# Добавляем новую подписку на появление расписания
+add_new_subscription:
+  path: /client/model/{modelId}/schedule/notify
+  controller: App\Domain\Core\Model\Controller\ScheduleNotificationController::addSubscription
+  methods: POST
+  requirements:
+    modelId: '\d+'
+
+# Удаляем подписку на появление расписания
+remove_schedule_subscription:
+  path: /client/model/{modelId}/schedule/notify
+  controller: App\Domain\Core\Model\Controller\ScheduleNotificationController::removeSubscription
+  methods: DELETE
+  requirements:
+    modelId: '\d+'
+
+# Получить доступные для подписки на расписание таймслоты
+get_schedule_subscriptions_timeslots:
+  path:       /schedule/subscriptions/timeslots
+  controller: App\Domain\Core\Model\Controller\ScheduleNotificationController::getSlotsForSubscription
+  methods:    GET
+
+# Получить доступные для подписки на расписание таймслоты для модели авто
+get_schedule_subscriptions_timeslots_for_model:
+  path:       /schedule/{modelId}/subscriptions/timeslots
+  controller: App\Domain\Core\Model\Controller\ScheduleNotificationController::getSlotsForSubscriptionForModel
+  methods:    GET
+  requirements:
+    modelId: '\d+'

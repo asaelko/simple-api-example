@@ -1,0 +1,4 @@
+amo-save-token:
+    path: /amo/token
+    controller: App\Domain\Infrastructure\AmoCrm\Controller\AuthController:index
+    methods: GET

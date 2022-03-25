@@ -1,0 +1,29 @@
+monolog:
+  channels:
+    - dealerStock
+    - amo
+    - announcement
+    - payment
+    - emarsys
+    - debug
+    - telegramBot
+    - dynamicSchedule
+    - basebuy
+    - leasing
+    - ivideon
+    - mail
+    - push
+    - offer
+    - phone
+    - slack
+    - widget
+    - callTouch
+    - eventBus
+    - notification
+    - loan
+    - testDrive
+    - uis
+    - yandex
+    - carPrice
+    - partnersMark
+    - albato

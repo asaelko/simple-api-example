@@ -1,0 +1,46 @@
+parameters:
+    drive:
+        continuously_daily_limit: 3
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Redis: '@snc_redis.default'
+
+    elastica_formatter:
+        class: App\Monolog\Formatters\ElasticaFormatter
+        arguments:
+            $index: '\l\o\g\s-Ymd'
+            $type: 'logs'
+
+    app.view_handler:
+        parent: fos_rest.view_handler.default
+        autowire: true
+        autoconfigure: false
+        public: true
+        calls:
+            - ['registerHandler', ['json', ['@app.json_view_response_handler', 'createResponse']]]
+
+    sensio_framework_extra.converter.listener:
+        alias: Sensio\Bundle\FrameworkExtraBundle\EventListener\ParamConverterListener
+
+    get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        public: false
+        tags: [serializer.normalizer]
+
+    # Обрабатываем исключения, возвращая валидный ответ API
+    AppBundle\EventListener\ApiExceptionSubscriber:
+        arguments: ['@Psr\Log\LoggerInterface']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    gedmo.listener.timestampable:
+        class: Gedmo\Timestampable\TimestampableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ "@annotation_reader" ] ]

@@ -1,0 +1,13 @@
+# Лизинг для ГПБ
+
+# Расчет лизинга для клиента по тачке
+get_leasing_calculate:
+  path:       /client/leasing/calculate
+  controller: App\Domain\Core\Leasing\Controller\LeasingController::calculateAction
+  methods:    POST
+
+# Обработка запроса на лизинг
+provide_leasing_request:
+  path:       /client/leasing/provide
+  controller: App\Domain\Core\Leasing\Controller\LeasingController::provideLeasingRequest
+  methods:    POST

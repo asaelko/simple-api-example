@@ -1,0 +1,12 @@
+snc_redis:
+    clients:
+        default:
+            type: phpredis
+            alias: default
+            dsn: "%redis_dsn%"
+            logging: '%kernel.debug%'
+        doctrine_redis:
+            type: phpredis
+            alias: doctrine_redis
+            dsn: "%redis_dsn%"
+            logging: '%kernel.debug%'

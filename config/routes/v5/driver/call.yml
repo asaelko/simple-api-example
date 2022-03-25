@@ -1,0 +1,7 @@
+#Методы для работы со звонками
+
+# Звонок клиенту
+make_driver_call:
+  path:       /driver/call
+  controller: App\Domain\Infrastructure\IpTelephony\Uis\Controller\UisController::makeDriverCallAction
+  methods:    POST

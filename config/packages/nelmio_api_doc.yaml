@@ -1,0 +1,35 @@
+nelmio_api_doc:
+    documentation:
+        servers:
+            -   url:         '%env(resolve:SWAGGER_URL)%'
+                description: API over HTTPS
+        info:
+            title:       Carl
+            description: This is an carl drive api!
+            version:     5.0.0
+    areas:
+        default:
+            name_patterns:
+                - ^v5_(?!amo)
+        driver:
+            path_patterns:
+                - ^/v5/driver
+        admin:
+            path_patterns:
+                - ^/v5/admin
+        classified:
+            path_patterns:
+                - ^/v5/classified
+        client:
+            path_patterns:
+                - ^/v5/client
+        dealer:
+            path_patterns:
+                - ^/v5/dealer
+        system:
+            path_patterns:
+                - ^/v5/geo
+                - ^/v5/suggest
+        web:
+            path_patterns:
+                - ^/v5/web

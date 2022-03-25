@@ -1,0 +1,4 @@
+request_call:
+  path: /client/request_call
+  controller: App\Domain\Core\Client\Controller\RequestCallController::requestCall
+  methods: POST

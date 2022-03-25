@@ -1,0 +1,41 @@
+# Каталог моделей авто для просмотра стоков и/или тест-драйвов
+get_model_catalog:
+  path: /web/catalog/model/list
+  controller: App\Domain\WebSite\Catalog\Controller\ModelController:listAction
+  methods: GET
+
+# Расширенная информация по модели
+show_model_catalog:
+  path: /web/catalog/model/{modelId}
+  controller: App\Domain\WebSite\Catalog\Controller\ModelController:showAction
+  methods: GET
+  requirements:
+    modelId: '\d+'
+
+get_model_gallery:
+  path: /web/catalog/model/{modelId}/gallery
+  controller: App\Domain\WebSite\Catalog\Controller\ModelController:showGalleryAction
+  methods: GET
+  requirements:
+    modelId: '\d+'
+
+get_model_gallery_categories:
+  path: /web/catalog/model/gallery/categories
+  controller: App\Domain\WebSite\Catalog\Controller\ModelController:showGalleryCategoriesAction
+  methods: GET
+
+# Саждест других моделей бренда
+get_brand_models:
+  path: /web/brand/{brandId}/models
+  controller: App\Domain\WebSite\Catalog\Controller\ModelController:listByBrandAction
+  methods: GET
+  requirements:
+    brandId: '\d+'
+
+# Саждест моделей, схожих по цене
+get_similar_models:
+  path: /web/model/{modelId}/similar
+  controller: App\Domain\WebSite\Catalog\Controller\ModelController:listSimilarAction
+  methods: GET
+  requirements:
+    modelId: '\d+'
